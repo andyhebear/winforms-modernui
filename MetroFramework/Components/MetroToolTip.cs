@@ -28,7 +28,6 @@ using System.Drawing;
 using System.Windows.Forms;
 
 using MetroFramework.Interfaces;
-using MetroFramework.Design;
 using MetroFramework.Drawing;
 
 namespace MetroFramework.Components
@@ -39,7 +38,7 @@ namespace MetroFramework.Components
         #region Interface
 
         private MetroColorStyle metroStyle = MetroColorStyle.Blue;
-        [Category("Metro Appearance")]
+        [Category(MetroDefaults.PropertyCategory.Appearance)]
         public MetroColorStyle Style
         {
             get
@@ -53,7 +52,7 @@ namespace MetroFramework.Components
         }
 
         private MetroThemeStyle metroTheme = MetroThemeStyle.Light;
-        [Category("Metro Appearance")]
+        [Category(MetroDefaults.PropertyCategory.Appearance)]
         public MetroThemeStyle Theme
         {
             get

@@ -24,6 +24,7 @@
 using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
+using System.Security;
 
 namespace MetroFramework.Native
 {
@@ -40,16 +41,18 @@ namespace MetroFramework.Native
     {
         private const string ClassName = "Shell_TrayWnd";
 
+        private Rectangle bounds = Rectangle.Empty;
         public Rectangle Bounds
         {
-            get;
-            private set;
+            get { return bounds; }
+            private set { bounds = value; }
         }
 
+        private TaskbarPosition position = TaskbarPosition.Unknown;
         public TaskbarPosition Position
         {
-            get;
-            private set;
+            get { return position; }
+            private set { position = value; }
         }
 
         public Point Location
@@ -68,18 +71,21 @@ namespace MetroFramework.Native
             }
         }
 
+        private bool alwaysOnTop = false;
         public bool AlwaysOnTop
         {
-            get;
-            private set;
+            get { return alwaysOnTop; }
+            private set { alwaysOnTop = value; }
         }
 
+        private bool autoHide = false;
         public bool AutoHide
         {
-            get;
-            private set;
+            get { return autoHide; }
+            private set { autoHide = value; }
         }
 
+        [SecuritySafeCritical]
         public Taskbar()
         {
             IntPtr taskbarHandle = WinApi.FindWindow(Taskbar.ClassName, null);
